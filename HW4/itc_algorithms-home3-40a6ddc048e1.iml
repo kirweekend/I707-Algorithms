@@ -8,6 +8,7 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="itc_algorithms-home3-40a6ddc048e1" level="project" />
     <orderEntry type="library" name="test" level="project" />
   </component>
 </module>

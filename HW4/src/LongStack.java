@@ -6,6 +6,7 @@ public class LongStack {
 
 
    public static void main (String[] argum) {
+      System.out.println(interpret("-54 3 4"));
       // TODO!!! Your tests here!
    }
    private LinkedList<Long> stack;
@@ -52,7 +53,7 @@ public class LongStack {
       } else if(s.equals(" ") | s.equals("\t")) {
          return;
       } else {
-         throw new RuntimeException("Invalid operation");
+         throw new RuntimeException("Illegal operation '" + s + "' (valid operations are +, -, * and /).");
       }
    }
 
@@ -94,8 +95,13 @@ public class LongStack {
       while (token.hasMoreTokens()) {
          values = (String) token.nextElement();
 
-         if (values.equals("+") || values.equals("-") || values.equals("*") || values.equals("/"))
+         if (values.equals("+") || values.equals("-") || values.equals("*") || values.equals("/")){
+            if (counter < 3)
+               throw new RuntimeException("Too few elements");
+
             ls.op(values);
+         }
+
 
          else {
             if (counter == i && i > 2)
@@ -105,9 +111,10 @@ public class LongStack {
                ls.push(a);
             }
             catch(NumberFormatException e) {
-               throw new RuntimeException("\nError, wrong input (" + pol + ")");
+               throw new RuntimeException("\nError, illegal symbol (" + pol + ")");
             }
          }
+
 
          i++;
       }
